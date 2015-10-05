@@ -1,8 +1,9 @@
 #!/bin/bash
+#▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+# Deploy this sysctl configuration to /etc/sysctl.conf
+#▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+>/etc/sysctl.conf cat << EOF
 
-# Deploy this custom sysctl configuration to /etc/sysctl.conf
-
-echo '
 # Avoid a smurf attack
 net.ipv4.icmp_echo_ignore_broadcasts = 1
  
@@ -53,4 +54,8 @@ net.ipv4.tcp_window_scaling = 1
 
 # Disable IPv6
 net.ipv6.conf.all.disable_ipv6=1
-' | sudo tee /etc/sysctl.conf && sudo sysctl -p
+
+EOF
+
+# Restart sysctl service to apply changes
+sudo sysctl -p
