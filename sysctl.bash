@@ -1,7 +1,7 @@
 #!/bin/bash
-#
-# Sysctl configuration
-#
+
+# Deploy this custom sysctl configuration to /etc/sysctl.conf
+
 echo '
 # Avoid a smurf attack
 net.ipv4.icmp_echo_ignore_broadcasts = 1
